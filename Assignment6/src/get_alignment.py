@@ -12,14 +12,14 @@ def populate_C(args, Ky):
         c[idx] = align(Ki,Ky)
     return c
 
-def populate_Q(args)
+def populate_Q(args):
     T = len(args) # Number of kernel matrices
     Q = np.zeros((T,T))
     idxs = range(T)
 
     for row in idxs:
         for col in idxs[row:]:
-            Q[row,col] = align(args[row], align[col])
+            Q[row,col] = align(args[row], args[col])
             Q[col,row] = Q[row,col]
     return Q
 
@@ -63,7 +63,7 @@ def get_alignment(Kernels, Y):
     h = matrix(np.zeros((T,1)))
 
     sol = solvers.qp(P,q,G,h)
-    d = sol['x']
+    d = np.asarray(sol['x'])
 
-    return d / np.norm(d)
+    return d / np.linalg.norm(d)
 
