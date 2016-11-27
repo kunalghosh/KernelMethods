@@ -1,0 +1,42 @@
+=== Generalized Vector Space ===
+C = 0.01 Accuracy = 0.508
+C = 0.1 Accuracy = 0.508
+C = 1.0 Accuracy = 0.508
+C = 10.0 Accuracy = 0.508
+C = 100.0 Accuracy = 0.508
+=== Latent Semantic Kernel with K-1 ===
+C = 0.01 Accuracy = 0.531
+C = 0.1 Accuracy = 0.531
+C = 1.0 Accuracy = 0.531
+C = 10.0 Accuracy = 0.531
+C = 100.0 Accuracy = 0.534
+=== Latent Semantic Kernel with K-500 ===
+C = 0.01 Accuracy = 0.825
+C = 0.1 Accuracy = 0.796
+C = 1.0 Accuracy = 0.783
+C = 10.0 Accuracy = 0.783
+C = 100.0 Accuracy = 0.783
+=== TF-IDF ===
+C = 0.01 Accuracy = 0.8
+C = 0.1 Accuracy = 0.8
+C = 1.0 Accuracy = 0.8
+C = 10.0 Accuracy = 0.8
+C = 100.0 Accuracy = 0.8
+=== Bag of Words ===
+C = 0.01 Accuracy = 0.809
+C = 0.1 Accuracy = 0.806
+C = 1.0 Accuracy = 0.806
+C = 10.0 Accuracy = 0.806
+C = 100.0 Accuracy = 0.806
+=== Latent Semantic Kernel with K-1000 ===
+C = 0.01 Accuracy = 0.809
+C = 0.1 Accuracy = 0.806
+C = 1.0 Accuracy = 0.806
+C = 10.0 Accuracy = 0.806
+C = 100.0 Accuracy = 0.806
+=== Latent Semantic Kernel with K-50 ===
+C = 0.01 Accuracy = 0.767
+C = 0.1 Accuracy = 0.762
+C = 1.0 Accuracy = 0.761
+C = 10.0 Accuracy = 0.76
+C = 100.0 Accuracy = 0.761
