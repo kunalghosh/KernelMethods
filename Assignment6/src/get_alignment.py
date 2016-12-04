@@ -31,7 +31,12 @@ def center_align(Kernels):
         Kernels[idx] = np.dot(np.dot(center_matrix, kernel),center_matrix)
 
     return Kernels
-         
+
+def normalize(Kernels):
+    for idx, kernel in enumerate(Kernels):
+        diag = np.atleast_2d(1.0 / np.sqrt(np.diag(kernel))) # diag now has dimensions (1,n)
+        Kernels[idx] = kernel * np.dot(diag.T, diag)
+    return Kernels    
 
 def get_alignment(Kernels, Y):
     """
@@ -48,13 +53,23 @@ def get_alignment(Kernels, Y):
     param       Y : Target values. (N,K)  
     return      d : A vector of weights. (T,1)
     """
-    # center align the matrices
-    args = center_align(Kernels)
+    
+    if not hasattr(get_alignment,"args"):
+        # center align the matrices
+        Kernels = normalize(Kernels)
+        args    = center_align(Kernels)
+        get_alignment.args = args
+
+    args = get_alignment.args
     T = len(args)
 
     Ky = np.dot(Y,Y.T)
     c = populate_C(args, Ky)
-    Q = populate_Q(args)
+
+    if not hasattr(get_alignment,"Q"):
+        get_alignment.Q = populate_Q(args)
+    Q = get_alignment.Q
+    # Q = populate_Q(args)
 
     # Solve the quadratic program
     P = matrix(Q)
