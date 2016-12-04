@@ -69,7 +69,6 @@ def get_alignment(Kernels, Y):
     if not hasattr(get_alignment,"Q"):
         get_alignment.Q = populate_Q(args)
     Q = get_alignment.Q
-    # Q = populate_Q(args)
 
     # Solve the quadratic program
     P = matrix(Q)
