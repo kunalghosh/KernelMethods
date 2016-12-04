@@ -67,3 +67,8 @@ if __name__ == '__main__':
             # train 13 one-vs-all svm classifiers
             # Calculate the classification accuracy 
         print("{} : {} ".format(col_idx, Accuracies[col_idx]))
+        
+    means = np.mean(np.asarray([v for k,v in Accuracies.items()]), axis=0).tolist()
+    print("Accuracies of each kernel avegared over 13 functional categories:")
+    for kern, mean in zip(kernel_dict.keys(), means):
+        print(kern, mean)
