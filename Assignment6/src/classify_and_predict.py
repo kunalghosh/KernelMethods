@@ -26,7 +26,6 @@ if __name__ == '__main__':
     d_all = dict()
     # get the linear combination weights
     for idx, y in enumerate(Y.T):
-        # pdb.set_trace()
         d = get_alignment(Kernels, np.atleast_2d(y).T) 
         d_all[idx] = d
         print("Got weights for functional property {}".format(idx))
@@ -37,7 +36,6 @@ if __name__ == '__main__':
     alignf = np.zeros((Y.shape[1], kern_shape[0], kern_shape[1]))
     for yi in range(Y.shape[1]):
         for idx,kernel in enumerate(Kernels):
-            # np.sum(alignf, kernel * d[idx], out=alignf)
             alignf[yi] += kernel * d_all[yi][idx]
         print("Calculated the ALIGNF kernel ... {}".format(yi))
 
@@ -49,22 +47,6 @@ if __name__ == '__main__':
 
     print("\nKernels are in order:")
     print([key for key in kernel_dict])
-
-
-    # Accuracies = {}
-    # for name, kernel in kernel_dict.items():
-    #     Accuracies[name] = []
-    #     # For each of the 7 Kernels
-    #     ktrain = kernel[train_idxs,:][:,train_idxs]
-    #     ktest_train = kernel[test_idxs,:][:,train_idxs] 
-    #     for col_idx in range(Y.shape[1]):
-    #        model = svm.SVC(C=1, kernel='precomputed')
-    #        model.fit(ktrain, Y[train_idxs,col_idx])
-    #        y_predict = model.predict(ktest_train)
-    #        Accuracies[name].append(np.mean(y_predict == Y[test_idxs,col_idx]))
-    #        # train 13 one-vs-all svm classifiers
-    #        # Calculate the classification accuracy 
-    #     print("{} : {} ".format(name, Accuracies[name]))
 
     Accuracies = dict()
     for col_idx in range(Y.shape[1]):
